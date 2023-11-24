@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 
 class PedidoPage extends StatefulWidget {
-  const PedidoPage({super.key});
+  final String titulo;
+  final String conteudo;
+  final double valor;
+  final String pathImagem;
+
+  PedidoPage(
+      {required this.titulo,
+      required this.conteudo,
+      required this.valor,
+      required this.pathImagem,
+      Key? key})
+      : super(key: key);
 
   @override
   State<PedidoPage> createState() => _PedidoPageState();
@@ -9,20 +20,23 @@ class PedidoPage extends StatefulWidget {
 
 class _PedidoPageState extends State<PedidoPage> {
   int quantidade = 1;
-  double preco = 5;
-  double precoTotal = 5;
+  double precoTotal = 0.0;
 
   @override
   Widget build(BuildContext context) {
+    precoTotal = widget.valor * quantidade;
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title:
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Container(
                 width: 30,
                 height: 30,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.all(0),
                       shape: RoundedRectangleBorder(
@@ -56,27 +70,26 @@ class _PedidoPageState extends State<PedidoPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                height: 10,
+                height: 20,
               ),
               Text(
-                'Hambúguer X-tudo',
+                widget.titulo,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 25,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.bold),
               ),
-              SizedBox(
-                height: 10,
-              ),
+              SizedBox(height: 25),
               Column(
                 children: [
                   Stack(
                     children: [
                       Center(
                         child: Container(
-                          width: 200,
-                          height: 190,
+                          margin: EdgeInsets.only(top: 25),
+                          width: 180,
+                          height: 180,
                           decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
@@ -96,26 +109,28 @@ class _PedidoPageState extends State<PedidoPage> {
                               //border: Border.all(color: Colors.black),
                               //  color: Colors.black,
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(100))),
+                                  BorderRadius.all(Radius.circular(360))),
                         ),
                       ),
                       Center(
                           child: Column(
                         children: [
-                          Text(
-                              'Hambúguer especial com queijo, bacon, carne, cheddar, alface, cebola',
+                          SizedBox(height: 20),
+                          Image.asset(
+                            widget.pathImagem,
+                            width: 195,
+                            height: 180,
+                          ),
+                          SizedBox(
+                            height: 40,
+                          ),
+                          Text(widget.conteudo,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Color.fromARGB(255, 67, 93, 107),
-                                  fontSize: 14,
+                                  fontSize: 15,
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.normal)),
-                          SizedBox(height: 20),
-                          Image.asset(
-                            'assets/images/hamburguer.png',
-                            width: 120,
-                            height: 120,
-                          ),
                         ],
                       )),
                     ],
@@ -123,7 +138,7 @@ class _PedidoPageState extends State<PedidoPage> {
                 ],
               ),
               SizedBox(
-                height: 50,
+                height: 30,
               ),
               Center(
                 child: Container(
@@ -131,7 +146,7 @@ class _PedidoPageState extends State<PedidoPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Material(
-                        textStyle: TextStyle(fontSize: 20),
+                        textStyle: TextStyle(fontSize: 15),
                         color: Color.fromARGB(220, 242, 125, 130),
                         borderRadius: BorderRadius.all(Radius.circular(100)),
                         child: InkWell(
@@ -139,7 +154,7 @@ class _PedidoPageState extends State<PedidoPage> {
                           onTap: () {
                             setState(() {
                               if (quantidade > 1) quantidade--;
-                              precoTotal = preco * quantidade;
+                              precoTotal = widget.valor * quantidade;
                             });
                           },
                           child: Container(
@@ -148,39 +163,43 @@ class _PedidoPageState extends State<PedidoPage> {
                             child: Center(
                                 child: Text(
                               '-',
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
+                              textAlign: TextAlign.start,
                             )),
                           ),
                         ),
                       ),
                       Text('$quantidade'),
-                      Material(
-                        textStyle: TextStyle(fontSize: 22),
-                        color: Color.fromARGB(220, 242, 125, 130),
-                        borderRadius: BorderRadius.all(Radius.circular(100)),
-                        child: InkWell(
-                          borderRadius: BorderRadius.all(Radius.circular(100)),
-                          onTap: () {
-                            setState(() {
-                              quantidade++;
-                              precoTotal = preco * quantidade;
-                            });
-                          },
-                          child: Container(
-                            width: 30,
-                            height: 30,
-                            child: Center(
-                                child: Text(
-                              '+',
-                            )),
-                          ),
-                        ),
-                      ),
+                      Container(
+                          width: 30,
+                          height: 30,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                quantidade++;
+                                precoTotal = widget.valor * quantidade;
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    Color.fromARGB(220, 242, 125, 130),
+                                padding: EdgeInsets.all(0),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(100)))),
+                            child: Icon(
+                              Icons.add,
+                              color: Colors.white,
+                            ),
+                          )),
                     ],
                   ),
                 ),
               ),
               SizedBox(
-                height: 50,
+                height: 70,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:trab/validation.dart';
 
-class CadastroPage extends StatelessWidget {
-  CadastroPage({Key? key}) : super(key: key);
+class PerfilPage extends StatelessWidget {
+  PerfilPage({Key? key}) : super(key: key);
 
   final _formKey = GlobalKey<FormState>();
   final Validation validar = Validation();
@@ -117,27 +117,30 @@ class CadastroPage extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    SizedBox(
-                      height: 35,
-                      width: 240,
-                      child: TextFormField(
-                        validator: (rua) => validar.campoRua(rua.toString()),
-                        textInputAction: TextInputAction.next,
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          labelText: 'Rua: ',
-                          labelStyle: const TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.w500),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(30.0),
+                    Expanded(
+                      child: SizedBox(
+                        height: 35,
+                        width: 240,
+                        child: TextFormField(
+                          validator: (rua) => validar.campoRua(rua.toString()),
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.text,
+                          decoration: InputDecoration(
+                            labelText: 'Rua: ',
+                            labelStyle: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            filled: true,
+                            fillColor: const Color.fromARGB(220, 229, 229, 229),
                           ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          filled: true,
-                          fillColor: const Color.fromARGB(220, 229, 229, 229),
                         ),
                       ),
                     ),
@@ -171,28 +174,31 @@ class CadastroPage extends StatelessWidget {
                 const SizedBox(height: 15),
                 Row(
                   children: [
-                    SizedBox(
-                      height: 35,
-                      width: 140,
-                      child: TextFormField(
-                        validator: (bairro) =>
-                            validar.campoBairro(bairro.toString()),
-                        textInputAction: TextInputAction.next,
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          labelText: 'Bairro:',
-                          labelStyle: const TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.w500),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(30.0),
+                    Expanded(
+                      child: SizedBox(
+                        height: 35,
+                        width: 140,
+                        child: TextFormField(
+                          validator: (bairro) =>
+                              validar.campoBairro(bairro.toString()),
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.text,
+                          decoration: InputDecoration(
+                            labelText: 'Bairro:',
+                            labelStyle: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            filled: true,
+                            fillColor: const Color.fromARGB(220, 229, 229, 229),
                           ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          filled: true,
-                          fillColor: const Color.fromARGB(220, 229, 229, 229),
                         ),
                       ),
                     ),

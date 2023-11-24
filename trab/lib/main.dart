@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'pages/favoritos_page.dart';
+import 'package:trab/pages/favoritos_page.dart';
+import 'package:trab/pages/home_page.dart';
+import 'package:trab/pages/nav_bar.dart';
 
 main() => runApp(const MyApp());
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           useMaterial3: true,
           textTheme: TextTheme(bodyLarge: TextStyle(fontFamily: 'Poppins'))),
-      home: FavoritosPage(),
+      home: NavBar(),
     );
   }
 }

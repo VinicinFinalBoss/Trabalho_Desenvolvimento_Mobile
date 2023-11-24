@@ -14,8 +14,6 @@ class _HomePageState extends State<HomePage> {
   bool clickBotao1 = false;
   bool clickBotao2 = false;
   bool clickBotao3 = false;
-  int _indicePagina = 0;
-  final List<Widget> _pages = [HomePage(), FilaPage(), PedidoPage()];
 
   @override
   Widget build(BuildContext context) {
@@ -294,6 +292,7 @@ class _HomePageState extends State<HomePage> {
     }
     return ElevatedButton(
       onPressed: () {
+        _navigateToPedidoPage(titulo, conteudo, valor, pathImagem);
         setState(() {});
       },
       style: ElevatedButton.styleFrom(
@@ -348,5 +347,20 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       categoriaSelecionada = novaCategoria;
     });
+  }
+
+  void _navigateToPedidoPage(
+      String titulo, String conteudo, double valor, String pathImagem) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PedidoPage(
+          titulo: titulo,
+          conteudo: conteudo,
+          valor: valor,
+          pathImagem: pathImagem,
+        ),
+      ),
+    );
   }
 }

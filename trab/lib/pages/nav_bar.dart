@@ -1,27 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:trab/pages/favoritos_page.dart';
 import 'package:trab/pages/fila.dart';
 import 'package:trab/pages/home_page.dart';
 import 'package:trab/pages/mainPerfil.dart';
-import 'package:trab/pages/pedido_page.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({Key? key}) : super(key: key);
   @override
-  _HomePageState createState() => _HomePageState();
+  _NavBarState createState() => _NavBarState();
 }
 
-class _HomePageState extends State<NavBar> {
+class _NavBarState extends State<NavBar> {
   bool clickBotao1 = false;
   bool clickBotao2 = false;
   bool clickBotao3 = false;
   int _indicePagina = 0;
   final List<Widget> _pages = [
     HomePage(),
-    CadastroPage(),
-    // FavoritosPage(),
-
-    PedidoPage(),
-    FilaPage()
+    FavoritosPage(),
+    PerfilPage(),
+    FilaPage(),
   ];
 
   @override
