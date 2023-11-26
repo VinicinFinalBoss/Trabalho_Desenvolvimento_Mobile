@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:trab/utils/appbarFormat.dart';
 
 import 'pedido_page.dart';
 
@@ -12,79 +11,55 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      home: const PopularesPizza(),
+      home: const PopularesMassas(),
     );
   }
 }
 
-class PopularesPizza extends StatefulWidget {
-  const PopularesPizza({super.key});
+class PopularesMassas extends StatefulWidget {
+  const PopularesMassas({super.key});
 
   @override
-  State<PopularesPizza> createState() => _PopularesPizzaState();
+  State<PopularesMassas> createState() => _PopularesMassasState();
 }
 
-class _PopularesPizzaState extends State<PopularesPizza> {
+class _PopularesMassasState extends State<PopularesMassas> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBarFormat1('Pizzas'),
+        appBar: AppBar(
+          title: const Text('Massas'),
+          backgroundColor: Color.fromARGB(220, 209, 16, 22),
+          centerTitle: true,
+        ),
         body: ListView(children: [
-          _itemProdutoBotao(
-              'Pizza de chocolate',
-              'Uma deliciosa pizza de Chocolate, adoce a sua noite',
-              44.90,
-              'assets/images/pizzaChocolate.png',
-              'Pizzas'),
+          _itemProdutoBotao('Lasanha de Presunto', 'Lasanha de Presunto 500g',
+              15.90, 'assets/images/lasanhaPresunto.png', 'Massas'),
           SizedBox(
             height: 20,
           ),
-          _itemProdutoBotao('Pizza de Carne Seca', 'Carne seca, a melhor',
-              55.90, 'assets/images/CarneSeca.png', 'Pizzas'),
+          _itemProdutoBotao('Lasanha de Frango', 'Lasanha de Frango 500g',
+              17.90, 'assets/images/lasanhaFrango.png', 'Massas'),
           SizedBox(
             height: 20,
           ),
-          _itemProdutoBotao(
-              'Pizza de muçarela',
-              'experimente nossa maravilhosa pizza de muçarela ',
-              42.90,
-              'assets/images/pizzaCompleta.png',
-              'Pizzas'),
+          _itemProdutoBotao('Lasanha de Calabresa', 'Lasanha de Calabresa 500g',
+              17.90, 'assets/images/lasanhaCalabresa.png', 'Massas'),
           SizedBox(
             height: 20,
           ),
-          _itemProdutoBotao('Pizza Vegetariana', 'Fabulosa Vegetariana', 44.90,
-              'assets/images/Vegetariana.png', 'Pizzas'),
+          _itemProdutoBotao('Espaguete Bolonhesa', 'Espaguete à bolonhesa',
+              15.90, 'assets/images/Espaguete.png', 'Massas'),
           SizedBox(
             height: 20,
           ),
-          _itemProdutoBotao('Pizza Portuguesa', 'Saborosa pizza de portuguesa',
-              44.90, 'assets/images/portuguesa.png', 'Pizzas'),
+          _itemProdutoBotao('Espaguete Camarão', 'Espaguete de Camarão', 20.90,
+              'assets/images/EspagueteCamarao.png', 'Massas'),
           SizedBox(
             height: 20,
           ),
-          _itemProdutoBotao('Pizza Siciliana', 'Maravilhosa Siciliana', 44.90,
-              'assets/images/Siciliana.png', 'Pizzas'),
-          SizedBox(
-            height: 20,
-          ),
-          _itemProdutoBotao('Pizza Quatro carnes', 'Quatro Carnes recheada',
-              44.90, 'assets/images/QuatroCarnes.png', 'Pizzas'),
-          SizedBox(
-            height: 20,
-          ),
-          _itemProdutoBotao('Bacon e Cheddar', 'Bacon e Cheddar, cremosa',
-              55.90, 'assets/images/BaconECheddar.png', 'Pizzas'),
-          SizedBox(
-            height: 20,
-          ),
-          _itemProdutoBotao('Frango Catupiry', 'Frango Catupiry, saborosa',
-              55.90, 'assets/images/FrangoCatupiry.png', 'Pizzas'),
-          SizedBox(
-            height: 20,
-          ),
-          _itemProdutoBotao('Pizza Napolitana', 'Especial', 55.90,
-              'assets/images/Napolitana.png', 'Pizzas'),
+          _itemProdutoBotao('Macarrão na Chapa', 'Macarrão na Chapa', 18.90,
+              'assets/images/macarraoChapa.png', 'Massas'),
         ]));
   }
 

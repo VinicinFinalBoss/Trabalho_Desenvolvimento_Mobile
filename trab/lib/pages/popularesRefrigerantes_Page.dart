@@ -12,79 +12,72 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      home: const PopularesPizza(),
+      home: const PopularesRefrigerantes(),
     );
   }
 }
 
-class PopularesPizza extends StatefulWidget {
-  const PopularesPizza({super.key});
+class PopularesRefrigerantes extends StatefulWidget {
+  const PopularesRefrigerantes({super.key});
 
   @override
-  State<PopularesPizza> createState() => _PopularesPizzaState();
+  State<PopularesRefrigerantes> createState() => _PopularesRefrigerantesState();
 }
 
-class _PopularesPizzaState extends State<PopularesPizza> {
+class _PopularesRefrigerantesState extends State<PopularesRefrigerantes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBarFormat1('Pizzas'),
+        appBar: AppBarFormat1('Refrigerantes'),
         body: ListView(children: [
-          _itemProdutoBotao(
-              'Pizza de chocolate',
-              'Uma deliciosa pizza de Chocolate, adoce a sua noite',
-              44.90,
-              'assets/images/pizzaChocolate.png',
-              'Pizzas'),
+          _itemProdutoBotao('Coca Cola 2L', 'Coca Cola 2L', 11.00,
+              'assets/images/coca2.png', 'Refrigerantes'),
+          SizedBox(height: 20),
+          _itemProdutoBotao('Fanta Laranja 2L', 'Fanta Laranja 2L', 8.00,
+              'assets/images/fanta2.png', 'Refrigerantes'),
           SizedBox(
             height: 20,
           ),
-          _itemProdutoBotao('Pizza de Carne Seca', 'Carne seca, a melhor',
-              55.90, 'assets/images/CarneSeca.png', 'Pizzas'),
+          _itemProdutoBotao('Coca Cola Zero 2LL', 'Coca Cola Zero 2L', 11.00,
+              'assets/images/cocaZero.png', 'Refrigerantes'),
           SizedBox(
             height: 20,
           ),
-          _itemProdutoBotao(
-              'Pizza de muçarela',
-              'experimente nossa maravilhosa pizza de muçarela ',
-              42.90,
-              'assets/images/pizzaCompleta.png',
-              'Pizzas'),
+          _itemProdutoBotao('Fanta Uva 2L', 'Fanta Uva 2L', 8.00,
+              'assets/images/fantaUva.png', 'Refrigerantes'),
           SizedBox(
             height: 20,
           ),
-          _itemProdutoBotao('Pizza Vegetariana', 'Fabulosa Vegetariana', 44.90,
-              'assets/images/Vegetariana.png', 'Pizzas'),
+          _itemProdutoBotao('Guaraná Antárctica 2L', 'Guaraná Antárctica 2L',
+              8.00, 'assets/images/guaranaAntartica.png', 'Refrigerantes'),
           SizedBox(
             height: 20,
           ),
-          _itemProdutoBotao('Pizza Portuguesa', 'Saborosa pizza de portuguesa',
-              44.90, 'assets/images/portuguesa.png', 'Pizzas'),
+          _itemProdutoBotao('Guarapan 2L', 'Guarapan 2L', 8.00,
+              'assets/images/guarapan.png', 'Refrigerantes'),
           SizedBox(
             height: 20,
           ),
-          _itemProdutoBotao('Pizza Siciliana', 'Maravilhosa Siciliana', 44.90,
-              'assets/images/Siciliana.png', 'Pizzas'),
+          _itemProdutoBotao('Mate Couro 2L', 'Mate Couro 2L', 8.00,
+              'assets/images/mateCouro.png', 'Refrigerantes'),
           SizedBox(
             height: 20,
           ),
-          _itemProdutoBotao('Pizza Quatro carnes', 'Quatro Carnes recheada',
-              44.90, 'assets/images/QuatroCarnes.png', 'Pizzas'),
+          _itemProdutoBotao('Pepsi 2L', 'Pepsi 2L', 8.00,
+              'assets/images/pepsi.png', 'Refrigerantes'),
           SizedBox(
             height: 20,
           ),
-          _itemProdutoBotao('Bacon e Cheddar', 'Bacon e Cheddar, cremosa',
-              55.90, 'assets/images/BaconECheddar.png', 'Pizzas'),
+          _itemProdutoBotao('Coca Cola 1L', 'Coca Cola 1L', 7.00,
+              'assets/images/cocacola1L.png', 'Refrigerantes'),
           SizedBox(
             height: 20,
           ),
-          _itemProdutoBotao('Frango Catupiry', 'Frango Catupiry, saborosa',
-              55.90, 'assets/images/FrangoCatupiry.png', 'Pizzas'),
+          _itemProdutoBotao('Guaraná Antárctica 1L', 'Guaraná Antárctica 1L',
+              7.50, 'assets/images/guaranaAntartica1L.png', 'Refrigerantes'),
           SizedBox(
             height: 20,
           ),
-          _itemProdutoBotao('Pizza Napolitana', 'Especial', 55.90,
-              'assets/images/Napolitana.png', 'Pizzas'),
         ]));
   }
 
@@ -127,8 +120,8 @@ class _PopularesPizzaState extends State<PopularesPizza> {
               child: Center(
                 child: Image.asset(
                   pathImagem,
-                  width: 250,
-                  height: 170,
+                  width: 100,
+                  height: 300,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -140,7 +133,7 @@ class _PopularesPizzaState extends State<PopularesPizza> {
                 SizedBox(
                   width: 50,
                 ),
-                _generateText('R\$${valor.toStringAsFixed(2)}', 18,
+                _generateText('R\$${valor.toStringAsFixed(2)}', 20,
                     Colors.black, FontWeight.bold)
               ],
             ),

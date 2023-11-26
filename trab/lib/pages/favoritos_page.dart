@@ -1,36 +1,68 @@
 import 'package:flutter/material.dart';
+import 'package:trab/pages/home_page.dart';
 
-class FavoritosPage extends StatelessWidget {
+import '../utils/appbarFormat.dart';
+
+class FavoritosPage extends StatefulWidget {
+  @override
+  _FavoritosPageState createState() => _FavoritosPageState();
+}
+
+class FavoritoItem {
+  final String nome;
+  final String preco;
+  final String imagePath;
+
+  FavoritoItem(this.nome, this.preco, this.imagePath);
+}
+
+class _FavoritosPageState extends State<FavoritosPage> {
+  List<FavoritoItem> favoritos = [
+    FavoritoItem('Pizza de Muçarela', 'Preço: 30', 'assets/images/pizza.png'),
+    FavoritoItem('Coca Cola', 'Preço: 10', 'assets/images/coca2.png'),
+    FavoritoItem('Lasanha', 'Preço: 20', 'assets/images/lasanhaPresunto.png'),
+    // Adicione mais itens de favoritos conforme necessário
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Favoritos'),
-      ),
-      body: ListView(
-        children: [
-          _buildFavoritoItem('Pizza de Muçarela', 'assets/images/pizza.png'),
-          _buildFavoritoItem('Coca Cola', 'assets/images/coca.png'),
-          _buildFavoritoItem('Lasanha', 'assets/images/lasanha.png'),
-          // Adicione mais itens de favoritos conforme necessário
-        ],
+      appBar: AppBarFormat1('Favoritos'),
+      body: ListView.builder(
+        itemCount: favoritos.length,
+        itemBuilder: (context, index) {
+          return _buildFavoritoItem(favoritos[index]);
+        },
       ),
     );
   }
 
-  Widget _buildFavoritoItem(String nome, String imagePath) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: ListTile(
-        leading: CircleAvatar(
-          backgroundImage: AssetImage(imagePath),
-        ),
-        title: Text(nome),
-        onTap: () {
-          // Implemente a lógica para lidar com o toque em um item de favorito
-          // Por exemplo, você pode abrir uma página de detalhes ou realizar outra ação.
-          print('Item de favorito selecionado: $nome');
-        },
+  Widget _buildFavoritoItem(FavoritoItem item) {
+    return ListTile(
+      leading: CircleAvatar(
+        backgroundImage: AssetImage(item.imagePath),
+      ),
+      title: Text(item.nome),
+      subtitle: Text(item.preco),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IconButton(
+            icon: Icon(Icons.remove_circle_outline_outlined),
+            onPressed: () {
+              // Remover a linha quando o botão de remoção é pressionado
+              setState(() {
+                favoritos.remove(item);
+              });
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.add_shopping_cart_outlined),
+            onPressed: () {
+              // Adicione o código para navegar para pagina do carrinho
+            },
+          ),
+        ],
       ),
     );
   }

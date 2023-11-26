@@ -1,18 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:trab/utils/appbarFormat.dart';
 import 'package:trab/validation.dart';
 
 class PerfilPage extends StatelessWidget {
   PerfilPage({Key? key}) : super(key: key);
 
+  // ignore: unused_field
   final _formKey = GlobalKey<FormState>();
   final Validation validar = Validation();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarFormat1('Perfil'),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title:
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Container(
+              width: 30,
+              height: 30,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.all(0),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)))),
+                child: Icon(
+                  Icons.keyboard_backspace_rounded,
+                  color: const Color.fromRGBO(197, 23, 30, 1),
+                ),
+              )),
+          Text(
+            'Perfil',
+            style: TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.normal),
+          ),
+          Text('     '),
+        ]),
+        backgroundColor: const Color.fromRGBO(197, 23, 30, 1),
+        centerTitle: true,
+      ),
       body: Padding(
         padding: EdgeInsets.all(2),
         child: Column(

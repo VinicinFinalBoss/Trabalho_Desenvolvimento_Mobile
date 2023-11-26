@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:trab/pages/pedido_page.dart';
-
-import 'fila.dart';
+import 'package:trab/pages/popularesMassas.dart';
+import 'package:trab/pages/popularesPizza_page.dart';
+import 'package:trab/pages/popularesRefrigerantes_Page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String categoriaSelecionada = 'Pizzas';
-  bool clickBotao1 = false;
+  bool clickBotao1 = true;
   bool clickBotao2 = false;
   bool clickBotao3 = false;
 
@@ -27,15 +28,14 @@ class _HomePageState extends State<HomePage> {
               color: Colors.red[200],
             ),
             _generateText(
-                'Belo Horizonte, ', 18, Colors.black, FontWeight.normal),
-            _generateText('MG', 18, Colors.grey, FontWeight.normal),
+                'Belo Horizonte, ', 18, Colors.black, FontWeight.bold),
+            _generateText('MG', 18, Colors.white, FontWeight.normal),
             SizedBox(
               width: 10,
             ),
-            IconButton(onPressed: () {}, icon: Icon(Icons.account_box_sharp))
           ],
         ),
-        backgroundColor: Colors.red[700],
+        backgroundColor: const Color.fromRGBO(197, 23, 30, 1),
         centerTitle: true,
       ),
       body: ListView(
@@ -154,9 +154,29 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     margin: EdgeInsets.only(right: 20),
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        if (clickBotao1) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => PopularesPizza(),
+                              ));
+                        } else if (clickBotao2) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => PopularesRefrigerantes(),
+                              ));
+                        } else if (clickBotao3) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => PopularesMassas(),
+                              ));
+                        }
+                      },
                       child: _generateText(
-                          'Ver todos >', 12, Colors.red[900]!, FontWeight.bold),
+                          'Ver todos >', 18, Colors.red[900]!, FontWeight.bold),
                     ),
                   )
                 ],

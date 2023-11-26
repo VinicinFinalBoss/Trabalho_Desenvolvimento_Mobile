@@ -1,16 +1,26 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:trab/utils/appbarFormat.dart';
 
 class FilaPage extends StatefulWidget {
-  const FilaPage({Key? key}) : super(key: key);
+  final int? confirmarPedido;
+  final String? pathImagem;
+  FilaPage({this.confirmarPedido, this.pathImagem, Key? key}) : super(key: key);
   @override
   _FilaPage createState() => _FilaPage();
 }
 
-DateTime now = DateTime.now();
-
 class _FilaPage extends State<FilaPage> {
+  List<Widget> filaPedidos = [];
+
+  Widget pedido3() {
+    if (widget.confirmarPedido == 1) {
+      return _pedido(widget.pathImagem!, 'Bruna(EU)', 0);
+    }
+    return Container();
+  }
+
   int contador = 125;
   int? horas;
   int? minutos;
@@ -19,6 +29,16 @@ class _FilaPage extends State<FilaPage> {
   @override
   void initState() {
     super.initState();
+    // Adiciona os pedidos iniciais
+    filaPedidos.add(_pedido('assets/images/pizza.png', 'Geovane', 15));
+    filaPedidos.add(_pedido('assets/images/pizza.png', 'Pedro', 10));
+    filaPedidos.add(pedido3());
+
+    if (widget.confirmarPedido != 0) {
+      filaPedidos.add(pedido3());
+    }
+
+    // Inicia o timer
     startTimer();
   }
 
@@ -37,27 +57,16 @@ class _FilaPage extends State<FilaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            _botaocontainer(Icons.arrow_back_ios_new_outlined),
-            Text('Fila de Espera', style: TextStyle(color: Colors.black)),
-            _botaocontainer(Icons.more_vert)
-          ],
-        ),
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        elevation: 0.0,
-      ),
+      appBar: AppBarFormat1('Fila'),
       body: Column(
         children: [
           Container(
             padding: EdgeInsets.all(8.0),
             child: retornaLinhaContador(),
           ),
-          _pedido('assets/images/pizza.png', 'Geovane'),
-          _pedido('assets/images/pizza.png', 'Vinícius')
+          filaPedidos[0],
+          filaPedidos[1],
+          filaPedidos[2]
         ],
       ),
     );
@@ -123,10 +132,8 @@ class _FilaPage extends State<FilaPage> {
   }
 }
 
-Container _pedido(
-  String caminhoImagem,
-  String nome,
-) {
+Container _pedido(String caminhoImagem, String nome, int minutes) {
+  DateTime now = DateTime.now().subtract(Duration(minutes: minutes));
   return Container(
     margin: EdgeInsets.all(8.0),
     decoration: BoxDecoration(

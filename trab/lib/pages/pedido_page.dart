@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trab/pages/fila.dart';
 
 class PedidoPage extends StatefulWidget {
   final String titulo;
@@ -19,6 +20,7 @@ class PedidoPage extends StatefulWidget {
 }
 
 class _PedidoPageState extends State<PedidoPage> {
+  int confirmarPedido = 0;
   int quantidade = 1;
   double precoTotal = 0.0;
 
@@ -228,7 +230,19 @@ class _PedidoPageState extends State<PedidoPage> {
                     width: 140,
                     height: 60,
                     child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            confirmarPedido = 1;
+                          });
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FilaPage(
+                                  confirmarPedido: confirmarPedido,
+                                  pathImagem: widget.pathImagem,
+                                ),
+                              ));
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromARGB(220, 200, 22, 29),
                           shape: RoundedRectangleBorder(

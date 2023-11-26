@@ -25,40 +25,58 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Início'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.favorite_border), label: 'Favoritos'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.person_outline_rounded,
-                  size: 30,
-                ),
-                label: 'Perfil'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.more_horiz_sharp), label: 'fila')
-          ],
-          currentIndex: 0,
-          unselectedItemColor: Colors.grey,
-          selectedItemColor: Colors.red,
-          selectedLabelStyle: TextStyle(color: Colors.red),
-          unselectedLabelStyle: TextStyle(color: Colors.black),
-          elevation: 100,
-          onTap: (indice) {
-            setState(() {
-              _indicePagina = indice;
-            });
-          },
-        ),
-        body: Container(
-          child: _pages.elementAt(_indicePagina),
-        ));
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: _indicePagina == 0 ? Colors.red : Colors.grey,
+            ),
+            label: 'Início',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.favorite_border,
+              color: _indicePagina == 1 ? Colors.red : Colors.grey,
+            ),
+            label: 'Favoritos',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person_outline_rounded,
+              size: 30,
+              color: _indicePagina == 2 ? Colors.red : Colors.grey,
+            ),
+            label: 'Perfil',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.more_horiz_sharp,
+              color: _indicePagina == 3 ? Colors.red : Colors.grey,
+            ),
+            label: 'fila',
+          ),
+        ],
+        currentIndex: _indicePagina,
+        onTap: (indice) {
+          setState(() {
+            _indicePagina = indice;
+          });
+        },
+      ),
+      body: Container(
+        child: _pages.elementAt(_indicePagina),
+      ),
+    );
   }
 
   Text _generateText(
-      String txt, double fontsize, Color color, FontWeight weight) {
+    String txt,
+    double fontsize,
+    Color color,
+    FontWeight weight,
+  ) {
     return Text(
       txt,
       style: TextStyle(
