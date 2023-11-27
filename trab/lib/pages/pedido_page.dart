@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trab/pages/favoritos_page.dart';
 import 'package:trab/pages/fila.dart';
 
 class PedidoPage extends StatefulWidget {
@@ -23,6 +24,7 @@ class _PedidoPageState extends State<PedidoPage> {
   int confirmarPedido = 0;
   int quantidade = 1;
   double precoTotal = 0.0;
+  int confirmarFavorito = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,21 @@ class _PedidoPageState extends State<PedidoPage> {
                 width: 30,
                 height: 30,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                          setState(() {
+                            confirmarFavorito = 1;
+                          });
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FavoritosPage(
+                                  confirmarFavorito: confirmarFavorito,
+                                  imagePath: widget.pathImagem,
+                                  nome: widget.titulo,
+                                  valor: widget.valor,
+                                ),
+                              ));
+                        },
                   style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.all(0),
                       shape: RoundedRectangleBorder(

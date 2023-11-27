@@ -158,7 +158,7 @@ Container _pedido(String caminhoImagem, String nome, int minutes) {
       ),
       title: Text(nome),
       trailing: Text(
-        'Pedido às: ${now.hour}:${now.minute}',
+        'Pedido às: ${now.hour}:${now.minute.toString().padLeft(2, '0')}',
         textAlign: TextAlign.right,
       ),
     ),

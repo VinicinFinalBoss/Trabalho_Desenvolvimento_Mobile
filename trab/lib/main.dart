@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trab/pages/favoritos_page.dart';
-import 'package:trab/pages/home_page.dart';
+
 import 'package:trab/pages/nav_bar.dart';
 
 main() => runApp(const MyApp());

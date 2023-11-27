@@ -4,66 +4,85 @@ import 'package:trab/pages/home_page.dart';
 import '../utils/appbarFormat.dart';
 
 class FavoritosPage extends StatefulWidget {
+  final int? confirmarFavorito;
+  final String? imagePath;
+  final String? nome;
+  final double? valor;
+  
+  FavoritosPage({this.confirmarFavorito, this.imagePath, this.nome, this.valor, Key? key}) : super(key: key);
+  
   @override
-  _FavoritosPageState createState() => _FavoritosPageState();
+
+  _FavoritosPage createState() => _FavoritosPage();
 }
 
-class FavoritoItem {
-  final String nome;
-  final String preco;
-  final String imagePath;
+class _FavoritosPage extends State<FavoritosPage> {
+  List<Widget> favoritos = [];
 
-  FavoritoItem(this.nome, this.preco, this.imagePath);
-}
-
-class _FavoritosPageState extends State<FavoritosPage> {
-  List<FavoritoItem> favoritos = [
-    FavoritoItem('Pizza de Muçarela', 'Preço: 30', 'assets/images/pizza.png'),
-    FavoritoItem('Coca Cola', 'Preço: 10', 'assets/images/coca2.png'),
-    FavoritoItem('Lasanha', 'Preço: 20', 'assets/images/lasanhaPresunto.png'),
-    // Adicione mais itens de favoritos conforme necessário
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBarFormat1('Favoritos'),
-      body: ListView.builder(
-        itemCount: favoritos.length,
-        itemBuilder: (context, index) {
-          return _buildFavoritoItem(favoritos[index]);
-        },
-      ),
-    );
+  Widget favoritos3() {
+    if (widget.confirmarFavorito == 1) {
+      return _favoritos(widget.imagePath!, widget.nome!, widget.valor!);
+    }
+    return Container(); // ou algum valor padrão
   }
 
-  Widget _buildFavoritoItem(FavoritoItem item) {
-    return ListTile(
+  @override
+  void initState() {
+    super.initState();
+      favoritos.add(_favoritos('assets/images/pizza.png', 'Pizza de Muçarela', 15.00));
+      favoritos.add(_favoritos('assets/images/coca2.png', 'Coca Cola', 5.00 ));
+      favoritos.add(_favoritos('assets/images/lasanhaPresunto.png', 'Lasanha', 20.00 ));
+      favoritos.add(favoritos3());
+
+    if (widget.confirmarFavorito != 0) {
+      favoritos.add(favoritos3());
+  }
+
+}
+  @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBarFormat1('Favoritos'),
+        body: Column(
+          children: [
+            favoritos[0],
+            favoritos[1],
+            favoritos[2],
+            favoritos[3],
+          ],
+        ),
+      );
+    }
+     Container _favoritos(String imagePath, String nome, double valor) {
+  return Container(
+    margin: EdgeInsets.all(8.0),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10.0),
+      border: Border.all(color: Colors.grey),
+    ),
+    child: ListTile(
       leading: CircleAvatar(
-        backgroundImage: AssetImage(item.imagePath),
+        backgroundImage: AssetImage(imagePath),
       ),
-      title: Text(item.nome),
-      subtitle: Text(item.preco),
+      title: Text(nome),
+      subtitle: Text('R\$${valor.toStringAsFixed(2)}'),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           IconButton(
-            icon: Icon(Icons.remove_circle_outline_outlined),
-            onPressed: () {
-              // Remover a linha quando o botão de remoção é pressionado
-              setState(() {
-                favoritos.remove(item);
-              });
-            },
-          ),
-          IconButton(
             icon: Icon(Icons.add_shopping_cart_outlined),
             onPressed: () {
-              // Adicione o código para navegar para pagina do carrinho
+              Navigator.pop(context);
+              // Adicione o código para navegar para a página do carrinho AQUIII
             },
           ),
         ],
       ),
-    );
-  }
+    ),
+  );
 }
+  }
+
+
+ 
+

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trab/utils/appbarFormat.dart';
 
 import 'pedido_page.dart';
 
@@ -27,11 +28,7 @@ class _PopularesMassasState extends State<PopularesMassas> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Massas'),
-          backgroundColor: Color.fromARGB(220, 209, 16, 22),
-          centerTitle: true,
-        ),
+        appBar: AppBarFormat1('Massas'),
         body: ListView(children: [
           _itemProdutoBotao('Lasanha de Presunto', 'Lasanha de Presunto 500g',
               15.90, 'assets/images/lasanhaPresunto.png', 'Massas'),
