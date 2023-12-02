@@ -55,20 +55,20 @@ class _PedidoPageState extends State<PedidoPage> {
                 height: 30,
                 child: ElevatedButton(
                   onPressed: () {
-                          setState(() {
-                            confirmarFavorito = 1;
-                          });
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => FavoritosPage(
-                                  confirmarFavorito: confirmarFavorito,
-                                  imagePath: widget.pathImagem,
-                                  nome: widget.titulo,
-                                  valor: widget.valor,
-                                ),
-                              ));
-                        },
+                    setState(() {
+                      confirmarFavorito = 1;
+                    });
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FavoritosPage(
+                            confirmarFavorito: confirmarFavorito,
+                            imagePath: widget.pathImagem,
+                            nome: widget.titulo,
+                            valor: widget.valor,
+                          ),
+                        ));
+                  },
                   style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.all(0),
                       shape: RoundedRectangleBorder(
@@ -163,32 +163,28 @@ class _PedidoPageState extends State<PedidoPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Material(
-                        textStyle: TextStyle(fontSize: 15),
-                        color: Color.fromARGB(220, 242, 125, 130),
-                        borderRadius: BorderRadius.all(Radius.circular(100)),
-                        child: InkWell(
-                          borderRadius: BorderRadius.all(Radius.circular(100)),
-                          onTap: () {
-                            setState(() {
-                              if (quantidade > 1) quantidade--;
-                              precoTotal = widget.valor * quantidade;
-                            });
-                          },
-                          child: Container(
-                            width: 30,
-                            height: 30,
-                            child: Center(
-                                child: Text(
-                              '-',
-                              style: TextStyle(
-                                fontSize: 20,
-                              ),
-                              textAlign: TextAlign.start,
-                            )),
-                          ),
-                        ),
-                      ),
+                      Container(
+                          width: 30,
+                          height: 30,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                if (quantidade > 1) quantidade--;
+                                precoTotal = widget.valor * quantidade;
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    Color.fromARGB(220, 242, 125, 130),
+                                padding: EdgeInsets.all(0),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(100)))),
+                            child: Icon(
+                              Icons.remove_rounded,
+                              color: Colors.black,
+                            ),
+                          )),
                       Text('$quantidade'),
                       Container(
                           width: 30,
@@ -208,8 +204,8 @@ class _PedidoPageState extends State<PedidoPage> {
                                     borderRadius: BorderRadius.all(
                                         Radius.circular(100)))),
                             child: Icon(
-                              Icons.add,
-                              color: Colors.white,
+                              Icons.add_rounded,
+                              color: Colors.black,
                             ),
                           )),
                     ],

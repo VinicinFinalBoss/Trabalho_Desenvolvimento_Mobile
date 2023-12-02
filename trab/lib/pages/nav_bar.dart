@@ -52,7 +52,7 @@ class _NavBarState extends State<NavBar> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.more_horiz_sharp,
+              Icons.group_outlined,
               color: _indicePagina == 3 ? Colors.red : Colors.grey,
             ),
             label: 'fila',

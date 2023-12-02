@@ -20,6 +20,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -67,11 +68,23 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 20,
               ),
-              TextField(
-                decoration: InputDecoration(
-                    hintText: 'Procure pela sua comida favorita',
-                    prefixIcon: Icon(Icons.search),
-                    fillColor: Colors.black),
+              Container(
+                margin: EdgeInsets.only(left: 20, right: 20),
+                child: Material(
+                  elevation: 5,
+                  borderRadius: BorderRadius.circular(15),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: 'Procure pela sua comida favorita',
+                      prefixIcon: Icon(Icons.search),
+                      fillColor: Colors.black,
+                      contentPadding: EdgeInsets.all(20),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                    ),
+                  ),
+                ),
               ),
               SizedBox(
                 height: 20,

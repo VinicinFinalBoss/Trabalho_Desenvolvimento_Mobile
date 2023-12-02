@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:trab/pages/login_page.dart';
 
 import 'package:trab/pages/nav_bar.dart';
 
-main() => runApp(const MyApp());
+main() {
+  runApp(
+    const MyApp(),
+  );
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           useMaterial3: true,
           textTheme: TextTheme(bodyLarge: TextStyle(fontFamily: 'Poppins'))),
-      home: NavBar(),
+      home: LoginPage(),
     );
   }
 }

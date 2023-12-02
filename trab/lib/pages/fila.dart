@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:trab/utils/appbarFormat.dart';
 
 class FilaPage extends StatefulWidget {
   final int? confirmarPedido;
@@ -21,7 +20,7 @@ class _FilaPage extends State<FilaPage> {
     return Container();
   }
 
-  int contador = 125;
+  int contador = 1159;
   int? horas;
   int? minutos;
   Timer? _timer;
@@ -30,8 +29,8 @@ class _FilaPage extends State<FilaPage> {
   void initState() {
     super.initState();
     // Adiciona os pedidos iniciais
-    filaPedidos.add(_pedido('assets/images/pizza.png', 'Geovane', 15));
-    filaPedidos.add(_pedido('assets/images/pizza.png', 'Pedro', 10));
+    filaPedidos.add(_pedido('assets/images/pizzaChocolate.png', 'Geovane', 15));
+    filaPedidos.add(_pedido('assets/images/lasanhaFrango.png', 'Pedro', 10));
     filaPedidos.add(pedido3());
 
     if (widget.confirmarPedido != 0) {
@@ -57,7 +56,19 @@ class _FilaPage extends State<FilaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarFormat1('Fila'),
+      appBar: AppBar(
+        title: Text(
+          'Fila',
+          style: TextStyle(
+              fontSize: 20,
+              color: Colors.white,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.normal),
+        ),
+        backgroundColor: const Color.fromRGBO(197, 23, 30, 1),
+        centerTitle: true,
+        iconTheme: IconThemeData(color: Colors.white),
+      ),
       body: Column(
         children: [
           Container(
@@ -151,7 +162,7 @@ Container _pedido(String caminhoImagem, String nome, int minutes) {
             border: Border.all(color: Colors.black, width: 2.0),
           ),
           child: CircleAvatar(
-            radius: 18,
+            radius: 20,
             backgroundImage: AssetImage(caminhoImagem),
           ),
         ),
