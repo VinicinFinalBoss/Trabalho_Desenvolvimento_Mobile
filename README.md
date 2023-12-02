@@ -25,7 +25,7 @@ Isso proporciona uma experiência de compra mais transparente e satisfatória pa
 
 1. *Download do Aplicativo:* Faça o download do aplicativo e salve-o em um local de sua preferência no seu computador.
 2. *Abra o VS Code:* Inicie o Visual Studio Code (VS Code) e abra a pasta do aplicativo que você acabou de baixar.
-3. *Em LIB>main.dart execute o classe de LoginPage. Este é o ponto de entrada para o aplicativo.
+3. *Na pasta LIB, abra o arquivo main.dart e execute a classe de LoginPage. Este é o ponto de entrada para o aplicativo.
 4. *Faça o Login:* Na página de login, você pode inserir qualquer informação para avançar para o aplicativo. Isso foi projetado para facilitar o acesso ao aplicativo durante a fase de desenvolvimento e teste.
 
 Depois de seguir estas etapas, você deve estar dentro do aplicativo e pronto para explorar suas funcionalidades. 
